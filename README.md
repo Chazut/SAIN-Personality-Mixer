@@ -2,19 +2,23 @@
 
 ![SAIN Personality Mixer](https://raw.githubusercontent.com/Chazut/SAIN-Personality-Mixer/main/assets/branding/SAIN-Personality-Mixer-logo-preview.png)
 
-Choose how often each SAIN personality appears among PMCs, independently of level and equipment.
+Choose the chance of each SAIN personality for PMCs, regardless of their level or equipment. Configure everything in **F12**.
 
-Requires **SPT 4.1.x and SAIN 4.5.1**. Install SAIN and its dependencies first. ORBIT is optional.
+## Why I made this
+
+SAIN uses level and equipment when assigning personalities. At higher levels, this can mean lots of Chads and less variety, depending on your preset.
+
+I wanted to keep a mix of aggressive, cautious and inexperienced PMCs throughout a playthrough. This also brings more variety to ORBIT, which uses SAIN personalities to shape bot behavior. **ORBIT is optional.**
 
 ## Install
 
-Extract the release ZIP into your SPT game folder. The plugin belongs at:
+Requires **SPT 4.1.x**, **SAIN 4.5.1** and its dependencies. The F12 menu requires BepInEx ConfigurationManager.
 
-```text
-BepInEx/plugins/SAINPersonalityMixer/SAINPersonalityMixer.dll
-```
+1. Extract the mod ZIP into your SPT folder.
+2. Open **F12 > SAIN Personality Mixer** and adjust the chances.
+3. Start a new raid to see your mix in action.
 
-Open **F12 > SAIN Personality Mixer** to change the mix. BepInEx ConfigurationManager must be installed to display the F12 menu. The configuration file is `BepInEx/config/com.chazut.sainpersonalitymixer.cfg`.
+The DLL belongs in `BepInEx/plugins/SAINPersonalityMixer/`.
 
 ## Default mix
 
@@ -29,44 +33,16 @@ Open **F12 > SAIN Personality Mixer** to change the mix. BepInEx ConfigurationMa
 | Timmy | 5% |
 | GigaChad | 5% |
 
-Values totaling 100 are percentages. Other totals are normalized automatically; **Effective chances** shows the result. Zero excludes a personality. If every value is zero, new bots use SAIN's normal assignment.
+Keep the total at 100 for percentages, or let the mod balance it automatically. **Effective chances** shows the result. Zero excludes a personality; all zeros restores SAIN's normal assignment for new bots.
 
-The selection is random for each bot, not a quota per raid. Small raids can differ considerably from the target mix.
+## Good to know
 
-## What changes
+- **PMCs only.** Scavs, bosses and other bots keep their usual SAIN assignment.
+- Your SAIN preset still controls combat behavior. The mixer only chooses the personality.
+- Each PMC gets a random roll, so one raid won't necessarily match the percentages.
+- Changes apply to new bots. Existing bots keep their personality.
+- Fika multiplayer has not been validated yet.
 
-- Only the `pmcUSEC` and `pmcBEAR` bot roles use the mix. Scavs, player Scavs, bosses, followers, raiders, rogues and other roles retain SAIN's assignment.
-- When the mixer selects a PMC's personality, it bypasses SAIN's level, equipment, nickname and forced-personality assignment rules, including SAIN's assignment enable/chance settings. The probabilities are controlled here.
-- The selected personality's combat settings still come from your active SAIN preset. Reloading that preset updates the settings while preserving the personality.
-- Changes to the mix or Enabled switch apply to **new bots**. Existing mixed bots keep their personality until the raid ends. Start another raid to apply a new mix to everyone.
-- A personality absent from a custom SAIN preset cannot be selected; the remaining choices are reweighted and a warning is logged. If a cached personality disappears after a preset reload, SAIN handles that bot's assignment until that personality is available again.
-- **Log assignments**, off by default, records one line per newly mixed PMC in `BepInEx/LogOutput.log`.
+To uninstall, close the game and remove the `SAINPersonalityMixer` plugin folder.
 
-The plugin does not replace SAIN files or edit its presets. ORBIT reads the personality chosen by SAIN, so it can use this mix without an ORBIT update. Assignment runs when SAIN configures bots; there is no per-frame scan.
-
-Only one mod should control personality assignment at a time. Other Harmony patches targeting the same method can affect the result. In Fika, the AI authority must run the plugin; multiplayer behavior still needs in-game validation.
-
-## Uninstall
-
-Close the game and remove `BepInEx/plugins/SAINPersonalityMixer`. Keep or remove the `.cfg` file as desired. SAIN's normal assignment resumes on the next launch.
-
-## Build and validate
-
-Requires the .NET 10 SDK for the regression tests and the local game/SAIN assemblies (not included). The plugin targets .NET Standard 2.1.
-
-```powershell
-dotnet build SAINPersonalityMixer.csproj -c Release -p:SptRoot="C:\Games\SPT-4.1"
-dotnet run --project tests/Regression/Regression.csproj -c Release
-```
-
-Pass `-p:SptRoot="path\to\SPT"` and, if needed, `-p:SainDirectory="path\to\SAIN"` to either command to use a different installation. Building does not install files into the game.
-
-Run `./scripts/Package.ps1` to build and create the installation ZIP in `dist/`. It accepts the same installation paths as PowerShell parameters (`-SptRoot` and `-SainDirectory`). Use `-SkipBuild` to package an existing Release build.
-
-Automated tests cover weighted assignment, PMC-only filtering, preset reloads, disabled/invalid configurations and cache lifetime. A short solo raid confirmed that the plugin loads and assigns varied personalities. The revised default mix still needs longer raid testing; multiplayer has not been validated.
-
-SAIN is maintained by its respective authors and is a separate required download. This package contains only Personality Mixer.
-
-## License
-
-SAIN Personality Mixer is released under the [MIT License](LICENSE). Game assemblies and other mods are not included and retain their own licenses.
+[Changelog](CHANGELOG.md) · [Build instructions](DEVELOPMENT.md) · [MIT License](LICENSE)
