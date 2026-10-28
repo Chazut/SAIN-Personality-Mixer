@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="title description">
+<title id="title">SAIN Personality Mixer icon</title>
+<desc id="description">A stylized brain with three amber mixing sliders. SAIN Personality Mixer. Original vector artwork with outlined lettering and no external dependencies.</desc>
+<g id="symbol" transform="translate(0 -10)">
+<g stroke-linecap="round" stroke-linejoin="round">
+  <g fill="#151D28" stroke="#F2F0E9" stroke-width="8">
+    <path d="M153 78 C143 56 112 55 99 78 C74 72 52 91 55 116 C31 128 26 158 44 179 C29 201 40 233 66 240 C68 267 96 280 116 268 C129 287 153 275 153 252 Z"/>
+    <path transform="translate(320 0) scale(-1 1)" d="M153 78 C143 56 112 55 99 78 C74 72 52 91 55 116 C31 128 26 158 44 179 C29 201 40 233 66 240 C68 267 96 280 116 268 C129 287 153 275 153 252 Z"/>
+  </g>
+  <g fill="none" stroke="#66717E" stroke-width="6">
+    <path d="M55 116 C73 109 89 119 89 134 M44 179 C62 170 80 179 83 193 M66 240 C85 229 103 238 107 249"/>
+    <path transform="translate(320 0) scale(-1 1)" d="M55 116 C73 109 89 119 89 134 M44 179 C62 170 80 179 83 193 M66 240 C85 229 103 238 107 249"/>
+  </g>
+  <path d="M95 134 H225 M95 176 H225 M95 218 H225" fill="none" stroke="#151D28" stroke-width="23"/>
+  <path d="M95 134 H225 M95 176 H225 M95 218 H225" fill="none" stroke="#66717E" stroke-width="7"/>
+  <path d="M95 134 H139 M95 176 H199 M95 218 H164" fill="none" stroke="#FFB547" stroke-width="7"/>
+  <g fill="#FFB547" stroke="#151D28" stroke-width="5">
+    <circle cx="139" cy="134" r="12"/>
+    <circle cx="199" cy="176" r="12"/>
+    <circle cx="164" cy="218" r="12"/>
+  </g>
+</g></g>
+</svg>

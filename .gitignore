@@ -1,0 +1,14 @@
+bin/
+obj/
+dist/
+work/
+*.user
+.vs/
+.idea/
+*.suo
+*.log
+*.dll
+*.exe
+*.pdb
+*.zip
+__pycache__/
